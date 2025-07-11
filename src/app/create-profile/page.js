@@ -1,4 +1,5 @@
 
+
  //TODO: I want to have a form here to collect Student Data
 // this a server component 
 
@@ -96,5 +97,6 @@ export default function CreateProfile() {
     </>
   );
 }
+
 
 
