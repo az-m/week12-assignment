@@ -72,8 +72,8 @@ export default function CreateProfile() {
           <label htmlFor="house_id">House ID</label>
           <select name="house_id">
             <option value=""> Select House ID</option>
-            <option value="1">Nature</option>
-            <option value="2">Necromancy</option>
+            <option value="3">Nature</option>
+            <option value="4">Necromancy</option>
           </select>
         </fieldset>
         <button type="submit">Submit</button>
