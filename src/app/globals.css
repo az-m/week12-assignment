@@ -27,6 +27,19 @@ Footer (#412234)
   --font-mono: var(--font-geist-mono);
 }
 
+.light {
+  background-color: whitesmoke;
+  color: black;
+}
+
+.dark {
+  background-color: black;
+  color: whitesmoke;
+}
+
+/* .dyslexic {
+} */
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
