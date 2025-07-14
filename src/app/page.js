@@ -1,6 +1,10 @@
+
 import ThemeButton from "@/components/ThemeButton";
 
 
+
+
+import { SignInButton } from "@clerk/nextjs";
 
 
 export default function HomePage() {
@@ -27,8 +31,14 @@ export default function HomePage() {
         You are part of house Necromancy! Learn! or die. and then live again!
         Live and learn haha. or die.
       </div>
+
       <div className="logIn">Log in here</div>
       <ThemeButton />
+
+      <div className="logIn">
+        <SignInButton />
+      </div>
+
     </>
   );
 }
