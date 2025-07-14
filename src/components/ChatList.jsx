@@ -1,4 +1,5 @@
 import { db } from "@/utils/dbConnection";
+import { ChatReplyForm } from "./ChatReplyForm";
 
 async function ChatList({ parentId = null }) {
   let query;
@@ -25,6 +26,7 @@ async function ChatList({ parentId = null }) {
             <div>
               <p>{chat.text}</p>
             </div>
+            <ChatReplyForm parentId={chat.post_id} />
             <ChatList parentId={chat.post_id} />
           </li>
         ))}
