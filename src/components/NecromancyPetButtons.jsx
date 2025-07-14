@@ -2,7 +2,6 @@
 //this needs to be client as the user will interact with it
 
 import { interactionNecromancy } from "@/actions/necromancy";
-import { db } from "@/utils/dbConnection";
 
 //we need a function in order to get current stats .. best to write it on this page and map the information using .map(stat)  ?
 
