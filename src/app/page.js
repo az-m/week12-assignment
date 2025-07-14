@@ -1,3 +1,5 @@
+import { SignInButton } from "@clerk/nextjs";
+
 export default function HomePage() {
   return (
     //this is the home/landing page for our app. it should have a (short) introduction/welcome to the school (maybe the school motto or something) & context on the houses in the school written as though a student is reading it
@@ -22,7 +24,9 @@ export default function HomePage() {
         You are part of house Necromancy! Learn! or die. and then live again!
         Live and learn haha. or die.
       </div>
-      <div className="logIn">Log in here</div>
+      <div className="logIn">
+        <SignInButton />
+      </div>
     </>
   );
 }
