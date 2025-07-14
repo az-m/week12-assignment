@@ -1,13 +1,9 @@
 "use client";
 
-import { useActionState } from "react";
-
-export function ChatSubmitButton() {
-  const { pending } = useActionState();
-
+export function ChatSubmitButton({ isPending }) {
   return (
-    <button type="submit" disabled={pending}>
-      {pending ? "Submitting..." : "Submit"}
+    <button type="submit" disabled={isPending}>
+      {isPending ? "Submitting..." : "Submit"}
     </button>
   );
 }

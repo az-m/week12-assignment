@@ -6,9 +6,10 @@ import { useActionState } from "react";
 import { ChatSubmitButton } from "./ChatSubmitButton";
 
 export function ChatReplyForm({ parentId }) {
-  const [state, dispatch] = useActionState(saveChat, {
+  const [state, dispatch, isPending] = useActionState(saveChat, {
     parentId,
   });
+
   const boundDispatch = dispatch.bind({ parentId });
   const [isOpen, setOpen] = useState(false);
 
@@ -27,7 +28,7 @@ export function ChatReplyForm({ parentId }) {
         <>
           <form action={boundDispatch}>
             <textarea name="text" placeholder="Reply..." />
-            <ChatSubmitButton />
+            <ChatSubmitButton isPending={isPending} />
           </form>
         </>
       ) : null}
