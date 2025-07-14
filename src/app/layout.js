@@ -33,16 +33,16 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
       <html lang="en">
-        {/* <Providers> */}
-        <body
-          className={`${notoSans.variable} ${OpenDyslexic.variable} ${fredoka.variable} antialiased`}
-        >
-          {children}
-          <SignedIn>
-            <Header />
-          </SignedIn>
-        </body>
-        {/* </Providers> */}
+        <Providers>
+          <body
+            className={`${notoSans.variable} ${OpenDyslexic.variable} ${fredoka.variable} antialiased`}
+          >
+            {children}
+            <SignedIn>
+              <Header />
+            </SignedIn>
+          </body>
+        </Providers>
       </html>
     </ClerkProvider>
   );
