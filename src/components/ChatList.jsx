@@ -1,5 +1,6 @@
 import { db } from "@/utils/dbConnection";
 import { ChatReplyForm } from "./ChatReplyForm";
+import ChatDeleteButton from "./ChatDeleteButton";
 
 async function ChatList({ parentId = null }) {
   let query;
@@ -16,18 +17,23 @@ async function ChatList({ parentId = null }) {
 
   return (
     <>
-      <ul>
+      <ul className="ml-4">
         {topChat.map((chat) => (
           <li key={chat.post_id}>
-            <div>
+            <div className="flex space-x-3 items-center pb-2">
               <span>{`${chat.first_name} ${chat.family_name}`}</span>
               <span>{parseDate(chat.created_at)}</span>
             </div>
-            <div>
-              <p>{chat.text}</p>
+            <div className="ml-4 border-l border-zinc-300 pl-2 flex flex-col space-y-1">
+              <div>
+                <p>{chat.text}</p>
+                <ChatReplyForm parentId={chat.post_id} />
+                <ChatList parentId={chat.post_id} />
+              </div>
+              <div>
+                <ChatDeleteButton chatID={chat.post_id} />
+              </div>
             </div>
-            <ChatReplyForm parentId={chat.post_id} />
-            <ChatList parentId={chat.post_id} />
           </li>
         ))}
       </ul>

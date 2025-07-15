@@ -21,3 +21,8 @@ export async function saveChat({ parentId = null }, formData) {
   revalidatePath(`/chat`);
   return { success: true };
 }
+
+export async function deleteChat(chatID) {
+  await db.query(`DELETE FROM posts WHERE post_id = $1`, [chatID]);
+  revalidatePath(`/chat`);
+}
