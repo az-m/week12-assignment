@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^6.24.0",
+    "@radix-ui/react-toggle": "^1.1.9",
     "next": "15.3.4",
     "pg": "^8.16.3",
     "react": "^19.0.0",

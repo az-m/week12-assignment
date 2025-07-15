@@ -8,45 +8,40 @@
 "use client";
 
 import { useTheme } from "@/context/ThemeContext"; //custom hook
+import { Toggle } from "@/components/Toggle";
 
 export default function ThemeButton() {
-
   const { state, dispatch } = useTheme();
 
   return (
     <div className="flex justify-between">
-      <button
+      <Toggle
+        aria-label="Toggle Light Mode"
         className={state.theme}
         onClick={() => {
           dispatch({ type: "light" });
         }}
       >
-        lightMode
-      </button>
-      <button
+        Light Mode
+      </Toggle>
+      <Toggle
+        aria-label="Toggle Dark Mode"
         className={state.theme}
         onClick={() => {
           dispatch({ type: "dark" });
         }}
       >
-        darkMode
-      </button>
-      {/* <button
-        className={state.theme}
-        onClick={() => {
-          dispatch({ type: "colourblind" });
-        }}
-      >
-        colorblindMode
-      </button> */}
-      <button
+        Dark Mode
+      </Toggle>
+      <Toggle
+        aria-label="Toggle Dyslexia Font"
         className={state.theme}
         onClick={() => {
           dispatch({ type: "dyslexia" });
         }}
       >
-        dyslexiaMode
-      </button>
+        Dyslexia Font
+      </Toggle>
     </div>
   );
 }
