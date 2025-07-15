@@ -6,6 +6,10 @@ import { ClerkProvider } from "@clerk/nextjs";
 import Header from "@/components/Header"; //using it as the footer for now - can be renamed in future
 import { SignedIn } from "@clerk/nextjs"; //importing this to conditionally render the footer on the welcome page
 import { Providers } from "@/Providers";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(useGSAP); // register the hook to avoid React version discrepancies
 
 // FONT SETUP
 const OpenDyslexic = localFont({
