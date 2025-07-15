@@ -57,7 +57,9 @@ export default function HomePage() {
         Log in here
         <SignInButton />
       </div>
+
       <ThemeButton />
+
     </>
   );
 }
