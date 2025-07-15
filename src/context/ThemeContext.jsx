@@ -60,7 +60,7 @@
 
 import { createContext, useContext, useReducer, useEffect } from "react";
 
-// Reducer
+// Reducer: handles changing the theme
 function themeReducer(state, action) {
   switch (action.type) {
     case "light":
@@ -73,15 +73,26 @@ function themeReducer(state, action) {
   }
 }
 
-// Context
 const ThemeContext = createContext();
 
-// Provider
+// Provider wraps your whole app
 export function ThemeProvider({ children }) {
-  const [state, dispatch] = useReducer(themeReducer, { theme: "light" });
+  // Load theme from localStorage or use "light"
+  const getInitialTheme = () => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("theme") || "light";
+    }
+    return "light";
+  };
 
-  // Apply theme class to <body>
+  const [state, dispatch] = useReducer(themeReducer, {
+    theme: getInitialTheme(),
+  });
+
+  // Save theme to localStorage and update <body> when theme changes
   useEffect(() => {
+    localStorage.setItem("theme", state.theme);
+
     document.body.classList.remove("light", "dark", "dyslexia", "colourblind");
     document.body.classList.add(state.theme);
   }, [state.theme]);
@@ -93,7 +104,7 @@ export function ThemeProvider({ children }) {
   );
 }
 
-// Hook
+// Custom hook to use theme in any component
 export function useTheme() {
   return useContext(ThemeContext);
 }
