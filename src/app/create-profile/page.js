@@ -6,7 +6,11 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { auth } from "@clerk/nextjs/server";
 
-export default function CreateProfile() {
+export default async function CreateProfile() {
+  // get data for options
+  const { rows: forms } = await db.query(`SELECT * FROM form`);
+  const { rows: houses } = await db.query(`SELECT * FROM house`);
+
   // server function --> an asynchronous function that runs in the server
   async function handleSubmit(formData) {
     //we need to tell Next to run this function in the server
@@ -60,20 +64,24 @@ export default function CreateProfile() {
 
           <label htmlFor="family_name">Family Name</label>
           <input type="text" name="family_name" required />
-          <label htmlFor="form_id">Form ID</label>
+          <label htmlFor="form_id">Form</label>
           <select name="form_id">
             <option value=""> Select Form</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
+            {forms.map((form) => (
+              <option key={form.form_id} value={form.form_id}>
+                {form.name}
+              </option>
+            ))}
           </select>
 
-          <label htmlFor="house_id">House ID</label>
+          <label htmlFor="house_id">House</label>
           <select name="house_id">
-            <option value=""> Select House ID</option>
-            <option value="3">Nature</option>
-            <option value="4">Necromancy</option>
+            <option value=""> Select House</option>
+            {houses.map((house) => (
+              <option key={house.house_id} value={house.house_id}>
+                {house.text}
+              </option>
+            ))}
           </select>
         </fieldset>
         <button type="submit">Submit</button>
