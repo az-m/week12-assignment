@@ -4,6 +4,7 @@ import { saveChat } from "@/actions/chat";
 import { useEffect, useState } from "react";
 import { useActionState } from "react";
 import { ChatSubmitButton } from "./ChatSubmitButton";
+import styles from "@/styles/chat.module.css";
 
 export function ChatReplyForm({ parentId }) {
   const [state, dispatch, isPending] = useActionState(saveChat, {
@@ -20,14 +21,14 @@ export function ChatReplyForm({ parentId }) {
   }, [state.success]);
 
   return (
-    <div>
-      <button onClick={() => setOpen(!isOpen)}>
+    <div className={styles.reply}>
+      <button onClick={() => setOpen(!isOpen)} className={styles.replyBtn}>
         {isOpen ? "Close" : "Reply"}
       </button>
       {isOpen ? (
         <>
-          <form action={boundDispatch}>
-            <textarea name="text" placeholder="Reply..." />
+          <form action={boundDispatch} className={styles.replyForm}>
+            <textarea name="text" placeholder="" className={styles.replytext} />
             <ChatSubmitButton isPending={isPending} />
           </form>
         </>
