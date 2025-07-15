@@ -4,9 +4,9 @@ import { saveChat } from "@/actions/chat";
 import { useEffect, useState } from "react";
 import { useActionState } from "react";
 import { ChatSubmitButton } from "./ChatSubmitButton";
-import styles from "@/styles/chat.module.css";
+// import styles from "@/styles/chat.module.css";
 
-export function ChatReplyForm({ parentId }) {
+export function ChatReplyForm({ parentId, styles }) {
   const [state, dispatch, isPending] = useActionState(saveChat, {
     parentId,
   });
