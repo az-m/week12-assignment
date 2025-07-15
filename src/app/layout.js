@@ -3,9 +3,9 @@ import { Noto_Sans, Fredoka } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
-import Header from "@/components/Header"; //using it as the footer for now - can be renamed in future
 import { SignedIn } from "@clerk/nextjs"; //importing this to conditionally render the footer on the welcome page
 import { Providers } from "@/Providers";
+import Footer from "@/components/Footer";
 
 // FONT SETUP
 const OpenDyslexic = localFont({
@@ -39,7 +39,7 @@ export default function RootLayout({ children }) {
           >
             {children}
             <SignedIn>
-              <Header />
+              <Footer />
             </SignedIn>
           </body>
         </Providers>
