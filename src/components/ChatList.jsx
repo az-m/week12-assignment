@@ -1,8 +1,11 @@
 import { db } from "@/utils/dbConnection";
 import { ChatReplyForm } from "./ChatReplyForm";
+import { isTeacher } from "@/actions/checkrole";
 import ChatDeleteButton from "./ChatDeleteButton";
 
 async function ChatList({ parentId = null }) {
+  const teacher = await isTeacher();
+
   let query;
   let args = [];
 
@@ -30,9 +33,7 @@ async function ChatList({ parentId = null }) {
                 <ChatReplyForm parentId={chat.post_id} />
                 <ChatList parentId={chat.post_id} />
               </div>
-              <div>
-                <ChatDeleteButton chatID={chat.post_id} />
-              </div>
+              <div>{teacher && <ChatDeleteButton chatID={chat.post_id} />}</div>
             </div>
           </li>
         ))}
