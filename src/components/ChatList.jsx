@@ -3,6 +3,7 @@ import { ChatReplyForm } from "./ChatReplyForm";
 import { isTeacher } from "@/actions/checkrole";
 import ChatDeleteButton from "./ChatDeleteButton";
 import styles from "@/styles/chat.module.css";
+import ChatSpacer from "./ChatSpacer";
 
 async function ChatList({ parentId = null }) {
   const teacher = await isTeacher();
@@ -38,12 +39,18 @@ async function ChatList({ parentId = null }) {
                   </span>
                 </div>
                 <p className={styles.chatText}>{chat.text}</p>
+                <div className={styles.chatDelete}>
+                  {teacher && <ChatDeleteButton chatID={chat.post_id} />}
+                </div>
               </div>
               <div className="ml-4">
-                <ChatReplyForm parentId={chat.post_id} />
+                {!teacher ? (
+                  <ChatReplyForm parentId={chat.post_id} />
+                ) : (
+                  <ChatSpacer />
+                )}
                 <ChatList parentId={chat.post_id} />
               </div>
-              <div>{teacher && <ChatDeleteButton chatID={chat.post_id} />}</div>
             </div>
           </li>
         ))}
