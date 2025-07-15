@@ -7,6 +7,7 @@ import ThemeButton from "@/components/ThemeButton";
 import { SignInButton } from "@clerk/nextjs";
 
 
+
 export default function HomePage() {
   return (
     //this is the home/landing page for our app. it should have a (short) introduction/welcome to the school (maybe the school motto or something) & context on the houses in the school written as though a student is reading it
@@ -38,6 +39,8 @@ export default function HomePage() {
       <div className="logIn">
         <SignInButton />
       </div>
+
+
 
     </>
   );
