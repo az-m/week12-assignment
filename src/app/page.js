@@ -141,8 +141,8 @@ export default function HomePage() {
         </section>
 
         <div className="panel logIn">
-          Log in here
           <SignInButton />
+
         </div>
       </section>
     </>
