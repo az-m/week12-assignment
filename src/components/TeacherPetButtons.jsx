@@ -1,7 +1,7 @@
 "use client";
 import { rewardPet } from "@/actions/teacherpet";
 
-export default function TeacherPetButtons({ natPet, necroPet }) {
+export default function TeacherPetButtons({ natPet, necroPet, styles }) {
   console.log(natPet);
   return (
     <>

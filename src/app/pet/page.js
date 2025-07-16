@@ -1,8 +1,8 @@
-import NaturePetButtons from "@/components/NaturePetButtons";
-import NecromancyPetButtons from "@/components/NecromancyPetButtons";
 import TeacherPetButtons from "@/components/TeacherPetButtons";
 import { isTeacher, house } from "@/actions/checkrole";
 import { db } from "@/utils/dbConnection";
+import PetButtons from "@/components/PetButtons";
+import natStyles from "@/styles/petNat.module.css";
 
 export default async function PetPage() {
   const teacher = await isTeacher();
@@ -12,12 +12,19 @@ export default async function PetPage() {
   const necroPet = (await db.query(`SELECT * FROM pet WHERE pet_id = 4`))
     .rows[0];
 
+  let styles = natStyles;
   return (
     <>
       <div>HERE WILL BE A PET</div>
-      {houseID == "4" && <NaturePetButtons />}
-      {houseID == "5" && <NecromancyPetButtons />}
-      {teacher && <TeacherPetButtons natPet={natPet} necroPet={necroPet} />}
+      {teacher ? (
+        <TeacherPetButtons
+          natPet={natPet}
+          necroPet={necroPet}
+          styles={styles}
+        />
+      ) : (
+        <PetButtons houseID={houseID} styles={styles} />
+      )}
     </>
   );
 }
