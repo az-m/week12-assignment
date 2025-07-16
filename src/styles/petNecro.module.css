@@ -44,3 +44,32 @@
   border-radius: 10px;
   margin: 5px;
 }
+
+.teacherOptions {
+  background-color: #fff8f8;
+  width: 80%;
+  border-radius: 2px;
+  padding: 5px;
+}
+
+.teacherOptions .nathead {
+  background-color: #f48498;
+  padding-left: 4px;
+}
+
+.teacherOptions .necrohead {
+  background-color: #39289c;
+  padding-left: 4px;
+}
+
+.teacherOptions .awards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+
+.teacherOptions .awards .button {
+  background-color: #312d46;
+  margin: 5px 0 5px 0;
+  padding: 10px;
+}
