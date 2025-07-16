@@ -21,11 +21,12 @@ export default function HomePage() {
       <section className="introText">
         <div className="panel schoolIntro">
           <Image
-            src="https://sptoozvtpevrsloyzajw.supabase.co/storage/v1/object/public/assets//logo.png"
+            src="https://sptoozvtpevrsloyzajw.supabase.co/storage/v1/object/public/assets//logonew.png"
             width={500}
             height={500}
             alt="A school logo"
             placeholder="empty"
+            priority
           />{" "}
           <p>Welcome, dear student, to</p>
           <p className="heroText">Magic Meadows!</p>
@@ -55,8 +56,8 @@ export default function HomePage() {
         </div>
         <div className="panel necromancyIntro">
           Or you could study in House Necromancy. As a new student, you will
-          first take a Do No Harm oath (yes, just like a doctor) before
-          unearthing the opportunities that await you.
+          first take a Do No Harm oath before unearthing the opportunities that
+          await you.
           <p>
             Students will choose one currently-dead intellect, artist or
             scientist as their mentor, and work toward raising them in time for
@@ -72,9 +73,11 @@ export default function HomePage() {
         <div className="panel logIn">
           Log in here
           <SignInButton />
-          <ThemeButton />
         </div>
       </section>
     </>
   );
+}
+{
+  /* <ThemeButton /> */
 }
