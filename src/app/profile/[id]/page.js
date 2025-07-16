@@ -1,4 +1,4 @@
-import styles from "@/app/profile/[id]/profile.module.css";
+import styles from "@/styles/profile.module.css";
 import ThemeButton from "@/components/ThemeButton";
 import { auth, currentUser } from "@clerk/nextjs/server";
 import { db } from "@/utils/dbConnection";
@@ -12,7 +12,7 @@ export default async function ProfilePage({ params }) {
   }
 
   const query = await db.query(
-    `SELECT * FROM student FULL OUTER JOIN subjects ON student.student_id = subjects.student_id WHERE clerk_id = $1`,
+    `SELECT * FROM student FULL OUTER JOIN subjects ON student.house_id = subjects.house_id WHERE clerk_id = $1`,
     [userId]
   );
 
