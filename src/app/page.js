@@ -1,7 +1,7 @@
 import ThemeButton from "@/components/ThemeButton";
 import Image from "next/image";
 
-import { SignInButton } from "@clerk/nextjs";
+import { SignInButton, SignOutButton } from "@clerk/nextjs";
 
 export default function HomePage() {
   return (
@@ -70,8 +70,8 @@ export default function HomePage() {
         </div>
 
         <div className="panel logIn">
-          Log in here
           <SignInButton />
+          <SignOutButton />
           <ThemeButton />
         </div>
       </section>

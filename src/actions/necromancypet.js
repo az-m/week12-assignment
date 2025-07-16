@@ -19,7 +19,7 @@ console.log(starting_fun, "FUN"); //for testing
  */
 //THIS WAS FOR TESTING - no longer needed, but I will leave it in here
 
-export async function interactionNecromancy(act) {
+export async function interactPet(act) {
   switch (act) {
     case "feed":
       db.query(
