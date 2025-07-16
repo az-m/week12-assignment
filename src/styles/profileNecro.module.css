@@ -1,26 +1,36 @@
-.panel {
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   font-family: "Noto Sans";
-}
-
-.panelone {
-  height: 30rem;
   background-color: #b49fcc;
 }
 
-.paneltwo {
+.panelone {
+  width: 90%;
   height: 10rem;
+}
+
+.paneltwo {
+  display: flex;
+  justify-content: center;
+  padding: 5px 0 5px 0;
+  width: 90%;
   background-color: #39289c;
+  border-radius: 2px;
 }
 
 .panelthree {
   height: 10rem;
-  background-color: #b49fcc;
 }
 
 .panelfour {
   height: 30rem;
-  background-color: #b49fcc;
+  width: 90%;
+  flex-direction: column;
+  justify-items: center;
+  padding-top: 10px;
 }
 
 .box {
