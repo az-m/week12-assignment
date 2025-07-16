@@ -66,14 +66,29 @@ body {
 
 /* HOMEPAGE STYLING */
 
+.homepagebackgroundGradient {
+  background-image: linear-gradient(
+    0deg,
+    rgba(215, 109, 160, 1) 0%,
+    rgba(171, 127, 180, 1) 52%,
+    rgba(123, 147, 201, 1) 100%
+  );
+}
+
 .heroText {
   font-family: var(--font-fredoka);
 }
 
 .panel {
-  height: 100vh;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.firstPanel {
+  height: 70vh;
+  display: flex;
+  gap: 10px;
 }
