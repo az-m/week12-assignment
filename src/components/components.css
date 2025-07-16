@@ -7,8 +7,29 @@
   align-items: center;
   justify-content: center;
   margin-top: 5px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
-.iconClass {
-  color: Gray 100;
+.buttonSection {
+  display: flex;
+  justify-content: space-evenly;
+  width: 50vw;
+  justify-self: center;
+  border-radius: 50;
+  padding: 5px;
+  background-color: pink;
+}
+
+.petButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #412234;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 100;
+  padding: 5px;
+  cursor: pointer;
 }

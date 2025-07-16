@@ -1,12 +1,17 @@
 "use client";
+import { IconBoom, IconCheese } from "@tabler/icons-react";
 
 import { interactPet } from "@/actions/naturepet";
 
 export default function NaturePetButtons() {
   return (
-    <>
-      <button onClick={() => interactPet("feed")}>Feed</button>
-      <button onClick={() => interactPet("play")}>Play</button>
-    </>
+    <section className="buttonSection">
+      <button className="petButton" onClick={() => interactPet("feed")}>
+        <IconCheese />
+      </button>
+      <button className="petButton" onClick={() => interactPet("play")}>
+        <IconBoom />
+      </button>
+    </section>
   );
 }

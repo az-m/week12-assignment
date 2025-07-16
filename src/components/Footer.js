@@ -11,7 +11,6 @@ export default async function Footer() {
   return (
     <div className="footerFlex">
       <Navbar />
-      <UserButton />
     </div>
   );
 }

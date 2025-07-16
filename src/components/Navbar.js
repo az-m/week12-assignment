@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { IconDog, IconMessage } from "@tabler/icons-react";
+import { IconDog, IconMessage, IconHome } from "@tabler/icons-react";
 import "./components.css";
 
 export default function Navbar() {
@@ -12,6 +12,11 @@ export default function Navbar() {
         <div className="">
           <Link href={"/pet"}>
             <IconDog />
+          </Link>
+        </div>
+        <div className="">
+          <Link href={"/"}>
+            <IconHome />
           </Link>
         </div>
       </div>
