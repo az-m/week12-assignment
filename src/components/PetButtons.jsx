@@ -3,19 +3,30 @@ import { IconBoom, IconCheese } from "@tabler/icons-react";
 import { interactPet } from "@/actions/interactpet";
 
 export default function PetButtons({ houseID, styles }) {
+  function handleClick(e, type, houseID) {
+    interactPet(type, houseID);
+    const el = e.currentTarget;
+    setTimeout(
+      () => {
+        el.blur();
+      },
+      "1000",
+      el
+    );
+  }
   return (
-    <section className="buttonSection">
+    <section className={styles.buttonSection}>
       <button
-        className="petButton"
-        onClick={() => interactPet("feed", houseID)}
+        className={styles.petButton}
+        onClick={(e) => handleClick(e, "feed", houseID)}
       >
-        <IconCheese />
+        <IconCheese className="text-black" />
       </button>
       <button
-        className="petButton"
-        onClick={() => interactPet("play", houseID)}
+        className={styles.petButton}
+        onClick={(e) => handleClick(e, "play", houseID)}
       >
-        <IconBoom />
+        <IconBoom className="text-black" />
       </button>
     </section>
   );
