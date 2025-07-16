@@ -13,3 +13,16 @@ export async function isTeacher() {
 
   return isTeacher;
 }
+
+export async function house() {
+  const user = await currentUser();
+
+  const house = (
+    await db.query(`SELECT house_id FROM student WHERE clerk_id = $1`, [
+      user.id,
+    ])
+  ).rows[0];
+
+  let houseID;
+  if (house ? (houseID = house.house_id) : null) return houseID;
+}

@@ -2,10 +2,10 @@ import { db } from "@/utils/dbConnection";
 import { ChatReplyForm } from "./ChatReplyForm";
 import { isTeacher } from "@/actions/checkrole";
 import ChatDeleteButton from "./ChatDeleteButton";
-import styles from "@/styles/chat.module.css";
+// import styles from "@/styles/chat.module.css";
 import ChatSpacer from "./ChatSpacer";
 
-async function ChatList({ parentId = null }) {
+async function ChatList({ parentId = null, styles }) {
   const teacher = await isTeacher();
 
   let query;
@@ -45,11 +45,11 @@ async function ChatList({ parentId = null }) {
               </div>
               <div className="ml-4">
                 {!teacher ? (
-                  <ChatReplyForm parentId={chat.post_id} />
+                  <ChatReplyForm parentId={chat.post_id} styles={styles} />
                 ) : (
                   <ChatSpacer />
                 )}
-                <ChatList parentId={chat.post_id} />
+                <ChatList parentId={chat.post_id} styles={styles} />
               </div>
             </div>
           </li>

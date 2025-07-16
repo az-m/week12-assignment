@@ -4,9 +4,9 @@ import { saveChat } from "@/actions/chat";
 import { useEffect, useState } from "react";
 import { useActionState } from "react";
 import { ChatSubmitButton } from "./ChatSubmitButton";
-import styles from "@/styles/chat.module.css";
+// import styles from "@/styles/chat.module.css";
 
-export function ChatPostForm() {
+export function ChatPostForm({ styles }) {
   const parentId = null;
   const [state, dispatch, isPending] = useActionState(saveChat, { parentId });
   const boundDispatch = dispatch.bind({ parentId });
