@@ -1,6 +1,6 @@
 import necroStyles from "@/styles/profileNecro.module.css";
 import natStyles from "@/styles/profileNat.module.css";
-// import ThemeButton from "@/components/ThemeButton";
+import ThemeButtons from "@/components/ThemeButtons";
 import { notFound } from "next/navigation";
 import { db } from "@/utils/dbConnection";
 
@@ -40,10 +40,6 @@ export default async function ProfilePage({ params }) {
           Welcome {userdata.first_name} {userdata.family_name}!
         </h1>
       </div>
-      {/* <div className={`${styles.panel} ${styles.panelthree}`}>
-        <h2>Accessibility toggles:</h2>
-        <ThemeButton />
-      </div> */}
       <div className={styles.panelfour}>
         <h2 className="text-zinc-900">Class Schedule:</h2>
         <div className={styles.box}>
@@ -53,6 +49,10 @@ export default async function ProfilePage({ params }) {
             ))}
           </ul>
         </div>
+      </div>
+      <div className={styles.panelthree}>
+        <h2 className="text-zinc-900">Accessibility toggles:</h2>
+        <ThemeButtons styles={styles} />
       </div>
     </div>
   );
