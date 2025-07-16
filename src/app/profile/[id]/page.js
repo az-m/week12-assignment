@@ -1,4 +1,5 @@
-import styles from "@/styles/profile.module.css";
+import necroStyles from "@/styles/profileNecro.module.css";
+import natStyles from "@/styles/profileNat.module.css";
 // import ThemeButton from "@/components/ThemeButton";
 import { notFound } from "next/navigation";
 import { db } from "@/utils/dbConnection";
@@ -20,13 +21,21 @@ export default async function ProfilePage({ params }) {
   }
 
   const userdata = query.rows[0];
+  const lessons = query.rows;
+
+  let styles = {};
+  if (userdata.house_id == "4") {
+    styles = natStyles;
+  } else {
+    styles = necroStyles;
+  }
 
   return (
-    <>
-      <div className={`${styles.panel} ${styles.panelone}`}>
+    <div className={styles.wrapper}>
+      <div className={styles.panelone}>
         IMAGE HERE (conditionally rendered for house?)
       </div>
-      <div className={`${styles.panel} ${styles.paneltwo}`}>
+      <div className={styles.paneltwo}>
         <h1>
           Welcome {userdata.first_name} {userdata.family_name}!
         </h1>
@@ -35,11 +44,16 @@ export default async function ProfilePage({ params }) {
         <h2>Accessibility toggles:</h2>
         <ThemeButton />
       </div> */}
-      <div className={`${styles.panel} ${styles.panelfour}`}>
-        <h2>Class Schedule:</h2>
-        <div className={styles.box}></div>
-        {userdata.classes}
+      <div className={styles.panelfour}>
+        <h2 className="text-zinc-900">Class Schedule:</h2>
+        <div className={styles.box}>
+          <ul>
+            {lessons.map((lesson) => (
+              <li key={lesson.subject_id}>{lesson.name}</li>
+            ))}
+          </ul>
+        </div>
       </div>
-    </>
+    </div>
   );
 }

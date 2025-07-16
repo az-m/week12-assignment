@@ -1,0 +1,44 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  font-family: "Noto Sans";
+  background-color: #acd8aa;
+}
+
+.panelone {
+  width: 90%;
+  height: 10rem;
+}
+
+.paneltwo {
+  display: flex;
+  justify-content: center;
+  padding: 5px 0 5px 0;
+  width: 90%;
+  background-color: #f48498;
+  border-radius: 2px;
+}
+
+.panelthree {
+  height: 10rem;
+}
+
+.panelfour {
+  height: 30rem;
+  width: 90%;
+  flex-direction: column;
+  justify-items: center;
+  padding-top: 10px;
+}
+
+.box {
+  background-color: #f48498;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 10px auto;
+  height: 70%;
+  width: 90%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
