@@ -32,3 +32,15 @@
 .petButton:focus {
   background-color: #fff538;
 }
+
+.petScores {
+  font-size: larger;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  width: 60%;
+  padding: 10px;
+  background-color: #39289c;
+  border-radius: 10px;
+  margin: 5px;
+}

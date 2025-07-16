@@ -14,14 +14,28 @@ export default async function PetPage() {
     .rows[0];
 
   let styles = {};
-  if (houseID === "4") {
+  if (houseID == "4") {
     styles = natStyles;
   } else {
     styles = necroStyles;
   }
+
   return (
     <div className={styles.wrapper}>
       <div>HERE WILL BE A PET</div>
+      {!teacher && (
+        <div className={styles.petScores}>
+          <p>
+            FOOD:{" "}
+            {houseID == "4" ? natPet.pet_food_score : necroPet.pet_food_score}
+          </p>
+          <p>
+            MOOD:{" "}
+            {houseID == "4" ? natPet.pet_mood_score : necroPet.pet_mood_score}
+          </p>
+        </div>
+      )}
+
       {teacher ? (
         <TeacherPetButtons
           natPet={natPet}
