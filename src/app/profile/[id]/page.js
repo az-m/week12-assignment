@@ -1,23 +1,22 @@
 import styles from "@/styles/profile.module.css";
-import ThemeButton from "@/components/ThemeButton";
-import { auth, currentUser } from "@clerk/nextjs/server";
+// import ThemeButton from "@/components/ThemeButton";
+import { notFound } from "next/navigation";
 import { db } from "@/utils/dbConnection";
 
 export default async function ProfilePage({ params }) {
-  const param = await params;
-  const { userId } = await auth();
+  const thisuser = (await params).id;
 
-  if (!userId) {
-    return <div>Please sign in to view your profile.</div>;
+  if (!parseInt(thisuser)) {
+    notFound();
   }
 
   const query = await db.query(
-    `SELECT * FROM student FULL OUTER JOIN subjects ON student.house_id = subjects.house_id WHERE clerk_id = $1`,
-    [userId]
+    `SELECT * FROM student FULL OUTER JOIN subjects ON student.house_id = subjects.house_id WHERE student_id = $1`,
+    [thisuser]
   );
 
   if (query.rows.length === 0) {
-    return <div>Profile not found.</div>;
+    notFound();
   }
 
   const userdata = query.rows[0];
@@ -32,10 +31,10 @@ export default async function ProfilePage({ params }) {
           Welcome {userdata.first_name} {userdata.family_name}!
         </h1>
       </div>
-      <div className={`${styles.panel} ${styles.panelthree}`}>
+      {/* <div className={`${styles.panel} ${styles.panelthree}`}>
         <h2>Accessibility toggles:</h2>
         <ThemeButton />
-      </div>
+      </div> */}
       <div className={`${styles.panel} ${styles.panelfour}`}>
         <h2>Class Schedule:</h2>
         <div className={styles.box}></div>
