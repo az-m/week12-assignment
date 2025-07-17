@@ -8,10 +8,13 @@ import { redirect } from "next/navigation";
 export default async function ChatPage() {
   const teacher = await isTeacher();
   const houseID = await house();
-  const hasprofile = await hasRecord();
 
-  if (!hasprofile) {
-    redirect("/create-profile");
+  if (!teacher) {
+    const hasprofile = await hasRecord();
+
+    if (!hasprofile) {
+      redirect("/create-profile");
+    }
   }
 
   let styles = {};

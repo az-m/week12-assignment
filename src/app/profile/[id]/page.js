@@ -1,7 +1,7 @@
 import necroStyles from "@/styles/profileNecro.module.css";
 import natStyles from "@/styles/profileNat.module.css";
 import ThemeButtons from "@/components/ThemeButtons";
-import { hasRecord } from "@/actions/checkrole";
+import { isTeacher, hasRecord } from "@/actions/checkrole";
 import { notFound } from "next/navigation";
 import { db } from "@/utils/dbConnection";
 import Image from "next/image";
@@ -9,12 +9,13 @@ import { redirect } from "next/navigation";
 
 export default async function ProfilePage({ params }) {
   const thisuser = (await params).id;
-  const hasprofile = await hasRecord();
-
-  if (!hasprofile) {
-    redirect("/create-profile");
+  const teacher = await isTeacher();
+  if (!teacher) {
+    const hasprofile = await hasRecord();
+    if (!hasprofile) {
+      redirect("/create-profile");
+    }
   }
-
   if (!parseInt(thisuser)) {
     notFound();
   }

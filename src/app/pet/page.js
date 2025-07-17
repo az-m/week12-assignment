@@ -11,12 +11,13 @@ import NecromancyDragon from "@/components/NecromancyDragon";
 export default async function PetPage() {
   const teacher = await isTeacher();
   const houseID = await house();
-  const hasprofile = await hasRecord();
+  if (!teacher) {
+    const hasprofile = await hasRecord();
 
-  if (!hasprofile) {
-    redirect("/create-profile");
+    if (!hasprofile) {
+      redirect("/create-profile");
+    }
   }
-
   const natPet = (await db.query(`SELECT * FROM pet WHERE pet_id = 3`)).rows[0];
   const necroPet = (await db.query(`SELECT * FROM pet WHERE pet_id = 4`))
     .rows[0];
