@@ -48,10 +48,10 @@ export default async function ProfilePage({ params }) {
           />
         ) : (
           <Image
-            src="https://sptoozvtpevrsloyzajw.supabase.co/storage/v1/object/public/assets//nature_dragon.gif"
+            src="https://sptoozvtpevrsloyzajw.supabase.co/storage/v1/object/public/assets//necromancy_dragon.gif"
             width={990}
             height={800}
-            alt="A pink dragon, representing necromancy floats in the air. Pink cherry blossom petals fall around it."
+            alt="A purple dragon, representing nature stands in a dark forest. Green ghosts emerge from the shadows."
             placeholder="empty"
             loading="lazy"
           />

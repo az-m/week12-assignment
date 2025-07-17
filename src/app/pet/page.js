@@ -27,10 +27,8 @@ export default async function PetPage() {
 
   return (
     <div className={styles.wrapper}>
-      <Music />
       <NecromancyDragon />
       <NatureDragon />
-      <Apple />
 
       {!teacher && (
         <div className={styles.petScores}>
