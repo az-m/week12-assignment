@@ -1,0 +1,13 @@
+.musicContainer {
+  height: 300px;
+  width: 300px;
+  display: block;
+  background-image: url(https://sptoozvtpevrsloyzajw.supabase.co/storage/v1/object/public/assets//music_sprite_sheet.png);
+  animation: sprite 3s steps(4) infinite;
+}
+
+@keyframes sprite {
+  100% {
+    background-position: -7200px;
+  }
+}
