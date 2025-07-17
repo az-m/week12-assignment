@@ -51,7 +51,7 @@ export default async function CreateProfile() {
         action={handleSubmit}
         className="w-full max-w-md bg-white p-6 rounded-lg border-black hover:shadow-[0_0_20px_4px_rgba(253,224,71,0.8)] transition-all duration-500"
       >
-        <fieldset className="flex flex-col gap-2 dark:text-black">
+        <fieldset className="flex flex-col gap-2 text-black">
           <legend className="font-bold  mb-2">Student Details</legend>
 
           <label htmlFor="first_name">First Name:</label>
