@@ -1,0 +1,35 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0 10px 0;
+  height: 100dvh;
+  background-color: #8d2143;
+}
+
+.header {
+  font-size: x-large;
+}
+
+.form {
+  width: 80%;
+  margin-top: 4px;
+}
+
+.list {
+  background-color: antiquewhite;
+  font-size: larger;
+  padding: 10px;
+  margin-top: 4px;
+  border-radius: 10px;
+}
+
+.item {
+  background-color: #412234;
+  margin-bottom: 5px;
+  padding: 3px 0px 3px 10px;
+  border-radius: 5px;
+}
+.item:last-of-type {
+  margin-bottom: 0px;
+}
