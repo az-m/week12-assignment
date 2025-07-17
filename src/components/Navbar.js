@@ -1,11 +1,15 @@
 import Link from "next/link";
-import { IconDog, IconMessage, IconHome } from "@tabler/icons-react";
-import "./components.css";
+import {
+  IconDog,
+  IconMessage,
+  IconHome,
+  IconUserCircle,
+} from "@tabler/icons-react";
 
-export default function Navbar() {
+export default function Navbar({ styles, profile }) {
   return (
     <>
-      <div className="footerFlex">
+      <div className={styles.nav}>
         <Link href={"/chat"}>
           <IconMessage />
         </Link>
@@ -14,6 +18,13 @@ export default function Navbar() {
             <IconDog />
           </Link>
         </div>
+        {profile && (
+          <div className="">
+            <Link href={profile}>
+              <IconUserCircle />
+            </Link>
+          </div>
+        )}
         <div className="">
           <Link href={"/"}>
             <IconHome />

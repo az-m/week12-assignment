@@ -1,17 +1,37 @@
 import Navbar from "./Navbar";
-import { UserButton } from "@clerk/nextjs";
+import { isTeacher } from "@/actions/checkrole";
 import { auth } from "@clerk/nextjs/server"; //the auth object contains all user's data eg userid
-import "./components.css";
+import styles from "@/styles/footer.module.css";
+import { db } from "@/utils/dbConnection";
+import { SignOutButton } from "@clerk/nextjs";
 
 export default async function Footer() {
   const { userId } = await auth();
+  const teacher = await isTeacher();
+
+  let profile;
+  if (!teacher) {
+    const student = (
+      await db.query(`SELECT student_id FROM student WHERE clerk_id = $1`, [
+        userId,
+      ])
+    ).rows[0];
+    if (!student) {
+      profile = null;
+    } else {
+      profile = `/profile/${student.student_id}`;
+    }
+  } else {
+    profile = `/teacher`;
+  }
 
   // console.log(userId)
 
   return (
-    <div className="footerFlex">
-      <Navbar />
-      <UserButton />
+    <div className={styles.footerFlex}>
+      <Navbar styles={styles} profile={profile} />
+      {/* <UserButton /> */}
+      <SignOutButton className="z-10" />
     </div>
   );
 }
