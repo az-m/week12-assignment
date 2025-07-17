@@ -31,7 +31,7 @@ export default async function Footer() {
     <div className={styles.footerFlex}>
       <Navbar styles={styles} profile={profile} />
       {/* <UserButton /> */}
-      <SignOutButton className="z-10" />
+      <SignOutButton />
     </div>
   );
 }

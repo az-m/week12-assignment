@@ -2,7 +2,6 @@
 import { rewardPet } from "@/actions/teacherpet";
 
 export default function TeacherPetButtons({ natPet, necroPet, styles }) {
-  console.log(natPet);
   return (
     <div className={styles.teacherOptions}>
       <h2 className={styles.nathead}>House Nature</h2>
