@@ -1,0 +1,13 @@
+.appleContainer {
+  height: 300px;
+  width: 300px;
+  display: block;
+  background-image: url(https://sptoozvtpevrsloyzajw.supabase.co/storage/v1/object/public/assets//apple_sprite_sheet.png);
+  animation: sprite 3s steps(3) infinite;
+}
+
+@keyframes sprite {
+  100% {
+    background-position: 7200px;
+  }
+}

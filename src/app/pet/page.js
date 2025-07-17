@@ -5,8 +5,11 @@ import PetButtons from "@/components/PetButtons";
 import necroStyles from "@/styles/petNecro.module.css";
 import natStyles from "@/styles/petNat.module.css";
 import { redirect } from "next/navigation";
-
 import NecromancyDragon from "@/components/NecromancyDragon";
+import NatureDragon from "@/components/NatureDragon";
+import Apple from "@/components/Apple";
+import Music from "@/components/Music";
+
 
 export default async function PetPage() {
   const teacher = await isTeacher();
@@ -30,7 +33,11 @@ export default async function PetPage() {
 
   return (
     <div className={styles.wrapper}>
+
+      <Music />
       <NecromancyDragon />
+      <NatureDragon />
+      <Apple />
 
       {!teacher && (
         <div className={styles.petScores}>
