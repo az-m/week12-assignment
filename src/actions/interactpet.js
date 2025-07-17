@@ -4,15 +4,12 @@ import { db } from "@/utils/dbConnection";
 import { revalidatePath } from "next/cache";
 
 export async function interactPet(act, houseID) {
-  console.log(houseID);
-
   const petID = (
     await db.query(`SELECT house_pet_id FROM house WHERE house_id = $1`, [
       houseID,
     ])
   ).rows[0].house_pet_id;
 
-  console.log(petID);
   switch (act) {
     case "feed":
       db.query(
