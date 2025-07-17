@@ -14,20 +14,29 @@ export default function PetButtons({ houseID, styles }) {
       el
     );
   }
+
+  //function to animate when eating
+
+  //function to animate when playing
+
+  //function to animate when eating is clicked (handleclickEating)()
+
   return (
-    <section className={styles.buttonSection}>
-      <button
-        className={styles.petButton}
-        onClick={(e) => handleClick(e, "feed", houseID)}
-      >
-        <IconCheese className="text-black" />
-      </button>
-      <button
-        className={styles.petButton}
-        onClick={(e) => handleClick(e, "play", houseID)}
-      >
-        <IconBoom className="text-black" />
-      </button>
-    </section>
+    <>
+      <section className={styles.buttonSection}>
+        <button
+          className={styles.petButton}
+          onClick={(e) => handleClick(e, "feed", houseID)}
+        >
+          <IconCheese className="text-black" />
+        </button>
+        <button
+          className={styles.petButton}
+          onClick={(e) => handleClick(e, "play", houseID)}
+        >
+          <IconBoom className="text-black" />
+        </button>
+      </section>
+    </>
   );
 }
