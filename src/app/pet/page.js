@@ -4,7 +4,9 @@ import { db } from "@/utils/dbConnection";
 import PetButtons from "@/components/PetButtons";
 import necroStyles from "@/styles/petNecro.module.css";
 import natStyles from "@/styles/petNat.module.css";
+
 import NecromancyDragon from "@/components/NecromancyDragon";
+
 
 export default async function PetPage() {
   const teacher = await isTeacher();
@@ -23,7 +25,9 @@ export default async function PetPage() {
 
   return (
     <div className={styles.wrapper}>
+
       <NecromancyDragon />
+
       {!teacher && (
         <div className={styles.petScores}>
           <p>

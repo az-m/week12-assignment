@@ -7,66 +7,74 @@ import { redirect } from "next/navigation";
 import { auth } from "@clerk/nextjs/server";
 
 export default async function CreateProfile() {
-  // get data for options
+  // Get current user details
+  const { userId } = await auth();
+
+  // Check if student already exists
+  const existing = await db.query(
+    `SELECT student_id FROM student WHERE clerk_id = $1`,
+    [userId]
+  );
+
+  console.log(existing);
+  if (existing.rows.length > 0) {
+    const studentID = existing.rows[0].student_id;
+    redirect(`/profile/${studentID}`);
+  }
+
   const { rows: forms } = await db.query(`SELECT * FROM form`);
   const { rows: houses } = await db.query(`SELECT * FROM house`);
 
-  // server function --> an asynchronous function that runs in the server
   async function handleSubmit(formData) {
-    //we need to tell Next to run this function in the server
     "use server";
 
-    // extracting the userId from clerk
     const { userId } = await auth();
-    if (!userId) {
-      console.log("User not found or not authenticated");
-      return;
-    }
 
-    //collect the data
-    formData = {
-      first_name: formData.get("first_name"),
-      family_name: formData.get("family_name"),
-      form_id: formData.get("form_id"),
-      house_id: formData.get("house_id"),
-    };
+    const first_name = formData.get("first_name");
+    const family_name = formData.get("family_name");
+    const form_id = formData.get("form_id");
+    const house_id = formData.get("house_id");
 
-    //insert the data into the database
-    const studentID = (
-      await db.query(
-        `INSERT INTO student (first_name,family_name,form_id,house_id,clerk_id) VALUES ($1, $2, $3, $4, $5) RETURNING student_id`,
-        [
-          formData.first_name,
-          formData.family_name,
-          formData.form_id,
-          formData.house_id,
-          userId,
-        ]
-      )
-    ).rows[0].student_id;
+    const result = await db.query(
+      `INSERT INTO student (first_name, family_name, form_id, house_id, clerk_id)
+       VALUES ($1, $2, $3, $4, $5)
+       RETURNING student_id`,
+      [first_name, family_name, form_id, house_id, userId]
+    );
 
-    //when we submit new data into the table, we need to revalidate the cache
+    const studentID = result.rows[0].student_id;
+
     revalidatePath("/create-profile");
-    //redirect to profilepage after signup
     redirect(`/profile/${studentID}`);
   }
 
   return (
-    <>
-      <h1>Student Profile</h1>
+    <div className="p-4 bg-amber-900 h-[100dvh]">
+      <h1 className="text-center text-xl">Create Student Profile</h1>
 
       <form action={handleSubmit}>
-        <fieldset>
-          <legend>Student Details</legend>
+        <fieldset className="flex flex-col mt-10">
+          <legend className="font-semibold">Student Details</legend>
 
-          <label htmlFor="first_name">First Name: </label>
-          <input type="text" name="first_name" required />
+          <label htmlFor="first_name">First Name:</label>
+          <input
+            type="text"
+            name="first_name"
+            required
+            className="border mb-2 pl-2"
+          />
 
-          <label htmlFor="family_name">Family Name</label>
-          <input type="text" name="family_name" required />
-          <label htmlFor="form_id">Form</label>
-          <select name="form_id">
-            <option value=""> Select Form</option>
+          <label htmlFor="family_name">Family Name:</label>
+          <input
+            type="text"
+            name="family_name"
+            required
+            className="border mb-2 pl-2"
+          />
+
+          <label htmlFor="form_id">Form:</label>
+          <select name="form_id" required className="bg-amber-800 mb-2">
+            <option value="">Select Form</option>
             {forms.map((form) => (
               <option key={form.form_id} value={form.form_id}>
                 {form.name}
@@ -74,9 +82,9 @@ export default async function CreateProfile() {
             ))}
           </select>
 
-          <label htmlFor="house_id">House</label>
-          <select name="house_id">
-            <option value=""> Select House</option>
+          <label htmlFor="house_id">House:</label>
+          <select name="house_id" required className="bg-amber-800 mb-2">
+            <option value="">Select House</option>
             {houses.map((house) => (
               <option key={house.house_id} value={house.house_id}>
                 {house.text}
@@ -84,8 +92,13 @@ export default async function CreateProfile() {
             ))}
           </select>
         </fieldset>
-        <button type="submit">Submit</button>
+        <button
+          type="submit"
+          className="bg-amber-950 border-1 rounded-md p-3 mt-5"
+        >
+          Submit
+        </button>
       </form>
-    </>
+    </div>
   );
 }
