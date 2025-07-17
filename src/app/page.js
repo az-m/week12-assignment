@@ -53,8 +53,8 @@ export default function HomePage() {
           >
             <p>
               <span className="spanTxt"> Magic Meadows</span> is famed for our
-              digital approach to wizard-schoooling. No more will parents need
-              to gather the strength to board the House Dragon for a weekend.
+              digital approach to wizard-schooling. No more will parents need to
+              gather the strength to board the House Dragon for a weekend.
             </p>
           </motion.div>
           <motion.div

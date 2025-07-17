@@ -24,17 +24,24 @@ export default async function PetPage() {
   const necroPet = (await db.query(`SELECT * FROM pet WHERE pet_id = 4`))
     .rows[0];
 
-  let styles = {};
+  let styles = {},
+    dragon;
   if (houseID == "4") {
     styles = natStyles;
+    dragon = "nature";
   } else {
     styles = necroStyles;
+    dragon = "necro";
   }
 
   return (
     <div className={styles.wrapper}>
-      <NecromancyDragon />
-      {/* <NatureDragon /> */}
+      {dragon == "necro" && !teacher && (
+        <NecromancyDragon ribbon={necroPet.acc_ribbon} />
+      )}
+      {dragon == "nature" && !teacher && (
+        <NatureDragon ribbon={natPet.acc_ribbon} />
+      )}
 
       {!teacher && (
         <div className={styles.petScores}>
