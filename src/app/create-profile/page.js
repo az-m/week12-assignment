@@ -11,9 +11,9 @@ export default async function CreateProfile() {
   // Get current user details
   const hasprofile = await hasRecord();
 
-  // if (hasprofile) {
-  //   redirect(`/profile/${hasprofile.student_id}`);
-  // }
+  if (hasprofile) {
+    redirect(`/profile/${hasprofile.student_id}`);
+  }
 
   const { rows: forms } = await db.query(`SELECT * FROM form`);
   const { rows: houses } = await db.query(`SELECT * FROM house`);
