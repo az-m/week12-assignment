@@ -10,7 +10,6 @@ import NatureDragon from "@/components/NatureDragon";
 import Apple from "@/components/Apple";
 import Music from "@/components/Music";
 
-
 export default async function PetPage() {
   const teacher = await isTeacher();
   const houseID = await house();
@@ -35,7 +34,7 @@ export default async function PetPage() {
   return (
     <div className={styles.wrapper}>
       <NecromancyDragon />
-      <NatureDragon />
+      {/* <NatureDragon /> */}
 
       {!teacher && (
         <div className={styles.petScores}>
