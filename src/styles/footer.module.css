@@ -10,4 +10,11 @@
   position: fixed;
   bottom: 0;
   width: 100%;
+  color: #fff8f8;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
 }
