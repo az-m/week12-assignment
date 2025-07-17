@@ -1,16 +1,21 @@
 import TeacherPetButtons from "@/components/TeacherPetButtons";
-import { isTeacher, house } from "@/actions/checkrole";
+import { isTeacher, house, hasRecord } from "@/actions/checkrole";
 import { db } from "@/utils/dbConnection";
 import PetButtons from "@/components/PetButtons";
 import necroStyles from "@/styles/petNecro.module.css";
 import natStyles from "@/styles/petNat.module.css";
+import { redirect } from "next/navigation";
 
 import NecromancyDragon from "@/components/NecromancyDragon";
-
 
 export default async function PetPage() {
   const teacher = await isTeacher();
   const houseID = await house();
+  const hasprofile = await hasRecord();
+
+  if (!hasprofile) {
+    redirect("/create-profile");
+  }
 
   const natPet = (await db.query(`SELECT * FROM pet WHERE pet_id = 3`)).rows[0];
   const necroPet = (await db.query(`SELECT * FROM pet WHERE pet_id = 4`))
@@ -25,7 +30,6 @@ export default async function PetPage() {
 
   return (
     <div className={styles.wrapper}>
-
       <NecromancyDragon />
 
       {!teacher && (

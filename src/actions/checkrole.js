@@ -26,3 +26,15 @@ export async function house() {
   let houseID;
   if (house ? (houseID = house.house_id) : null) return houseID;
 }
+
+export async function hasRecord() {
+  const user = await currentUser();
+
+  const hasRecord = (
+    await db.query(`SELECT student_id FROM student WHERE clerk_id = $1`, [
+      user.id,
+    ])
+  ).rows[0];
+
+  return hasRecord;
+}

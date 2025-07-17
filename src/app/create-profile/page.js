@@ -5,21 +5,14 @@ import { db } from "@/utils/dbConnection";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { auth } from "@clerk/nextjs/server";
+import { hasRecord } from "@/actions/checkrole";
 
 export default async function CreateProfile() {
   // Get current user details
-  const { userId } = await auth();
+  const hasprofile = await hasRecord();
 
-  // Check if student already exists
-  const existing = await db.query(
-    `SELECT student_id FROM student WHERE clerk_id = $1`,
-    [userId]
-  );
-
-  console.log(existing);
-  if (existing.rows.length > 0) {
-    const studentID = existing.rows[0].student_id;
-    redirect(`/profile/${studentID}`);
+  if (hasprofile) {
+    redirect(`/profile/${hasprofile.student_id}`);
   }
 
   const { rows: forms } = await db.query(`SELECT * FROM form`);

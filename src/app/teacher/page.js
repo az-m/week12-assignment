@@ -1,14 +1,16 @@
 import { db } from "@/utils/dbConnection";
-import { auth } from "@clerk/nextjs/server";
 import styles from "@/styles/teacherProfile.module.css";
 import Link from "next/link";
+import { isTeacher, hasRecord } from "@/actions/checkrole";
+import { redirect } from "next/navigation";
 
 export default async function TeacherPage() {
-  const { userId } = await auth();
+  const teacher = await isTeacher();
+  const hasprofile = await hasRecord();
 
-  const teacher = (
-    await db.query(`SELECT * FROM teacher WHERE clerk_id = $1`, [userId])
-  ).rows[0];
+  if (!hasprofile) {
+    redirect("/create-profile");
+  }
 
   if (!teacher) {
     return "You are not a teacher";
