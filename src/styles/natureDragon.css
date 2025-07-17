@@ -1,0 +1,13 @@
+.dragonContainer {
+  height: 300px;
+  width: 300px;
+  display: block;
+  background-image: url(https://sptoozvtpevrsloyzajw.supabase.co/storage/v1/object/public/assets//natu_heart_sprite_sheet.png);
+  animation: sprite 30s steps(12) infinite;
+}
+
+@keyframes sprite {
+  100% {
+    background-position: -7200px;
+  }
+}
