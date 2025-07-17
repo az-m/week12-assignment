@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+/* I really did try and keep this as tidy as possible...*/
+
 /* storing the hex codes here for ease of finding later 
 
 Nature 
@@ -39,7 +41,6 @@ body {
   color: var(--foreground);
 
   font-family: var(--font-noto-sans);
-  /* font-family: var(--font-noto-sans); */
 }
 
 /* stylling for themecontext */
@@ -53,11 +54,6 @@ body {
   color: whitesmoke;
 }
 
-/* .colourblind {
-  background-color: blue;
-  color: orange;
-} */
-
 .dyslexia {
   /* background-color: orange; */
   /* color: black; */
@@ -70,25 +66,55 @@ body {
   background-image: linear-gradient(
     0deg,
     rgba(215, 109, 160, 1) 0%,
-    rgba(171, 127, 180, 1) 52%,
-    rgba(123, 147, 201, 1) 100%
+    rgb(151, 85, 164) 52%,
+    rgb(37, 52, 86) 100%
   );
 }
 
-.heroText {
-  font-family: var(--font-fredoka);
+/* we have to have a media query to control how this looks on a screen bigger than a phone - for now we have this */
+.dragonheader {
+  display: flex;
+  justify-self: center;
 }
 
-.panel {
-  height: 80vh;
+.titleTextline {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  font-size: 10vw;
+  text-transform: uppercase;
+  font-family: Inspire;
+}
+
+.intoParagraph {
+  width: 80vw;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  justify-self: center;
+  justify-items: center;
+  color: #ededed;
+  font-size: 16px;
+  gap: 20px;
+  margin-bottom: 1rem;
 }
 
-.firstPanel {
-  height: 70vh;
+.SignInButton {
   display: flex;
-  gap: 10px;
+  justify-self: right;
+  background-color: #5362f6;
+  padding: 9px;
+  font-size: 12px;
+  border-radius: 100;
+  box-shadow: 2px 2px #e485f8;
+}
+
+.SignInButton:hover {
+  cursor: pointer;
+}
+
+.spanTxt {
+  font-weight: 700;
+  color: #ededed;
+  text-shadow: 0.5px 0.5px #610b1a;
+  font-family: fredoka;
 }

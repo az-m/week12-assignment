@@ -5,6 +5,9 @@ import PetButtons from "@/components/PetButtons";
 import necroStyles from "@/styles/petNecro.module.css";
 import natStyles from "@/styles/petNat.module.css";
 
+import NecromancyDragon from "@/components/NecromancyDragon";
+
+
 export default async function PetPage() {
   const teacher = await isTeacher();
   const houseID = await house();
@@ -22,7 +25,9 @@ export default async function PetPage() {
 
   return (
     <div className={styles.wrapper}>
-      <div>HERE WILL BE A PET</div>
+
+      <NecromancyDragon />
+
       {!teacher && (
         <div className={styles.petScores}>
           <p>

@@ -12,6 +12,8 @@ const OpenDyslexic = localFont({
   src: "./OpenDyslexic-Regular.woff",
 });
 
+const Inspire = localFont({ src: "./Inspire.woff" });
+
 const fredoka = Fredoka({
   variable: "--font-fredoka",
   subsets: ["latin"],
@@ -35,7 +37,7 @@ export default function RootLayout({ children }) {
       <html lang="en">
         <Providers>
           <body
-            className={`${notoSans.variable} ${OpenDyslexic.variable} ${fredoka.variable} antialiased`}
+            className={`${notoSans.variable} ${OpenDyslexic.variable} ${fredoka.variable} ${Inspire.variable}  antialiased`}
           >
             {children}
             <SignedIn>
