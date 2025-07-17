@@ -3,6 +3,7 @@ import natStyles from "@/styles/profileNat.module.css";
 import ThemeButtons from "@/components/ThemeButtons";
 import { notFound } from "next/navigation";
 import { db } from "@/utils/dbConnection";
+import Image from "next/image";
 
 export default async function ProfilePage({ params }) {
   const thisuser = (await params).id;
@@ -23,17 +24,38 @@ export default async function ProfilePage({ params }) {
   const userdata = query.rows[0];
   const lessons = query.rows;
 
-  let styles = {};
+  let styles = {},
+    house = "";
   if (userdata.house_id == "4") {
     styles = natStyles;
+    house = "nat";
   } else {
     styles = necroStyles;
+    house = "necro";
   }
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.panelone}>
-        IMAGE HERE (conditionally rendered for house?)
+        {house == "nat" ? (
+          <Image
+            src="https://sptoozvtpevrsloyzajw.supabase.co/storage/v1/object/public/assets//nature_dragon.gif"
+            width={990}
+            height={800}
+            alt="A pink dragon, representing nature floats in the air. Pink cherry blossom petals fall around it."
+            placeholder="empty"
+            loading="lazy"
+          />
+        ) : (
+          <Image
+            src="https://sptoozvtpevrsloyzajw.supabase.co/storage/v1/object/public/assets//nature_dragon.gif"
+            width={990}
+            height={800}
+            alt="A pink dragon, representing necromancy floats in the air. Pink cherry blossom petals fall around it."
+            placeholder="empty"
+            loading="lazy"
+          />
+        )}
       </div>
       <div className={styles.paneltwo}>
         <h1>
@@ -45,7 +67,9 @@ export default async function ProfilePage({ params }) {
         <div className={styles.box}>
           <ul>
             {lessons.map((lesson) => (
-              <li key={lesson.subject_id}>{lesson.name}</li>
+              <li key={lesson.subject_id} className={styles.lesson}>
+                {lesson.name}
+              </li>
             ))}
           </ul>
         </div>
