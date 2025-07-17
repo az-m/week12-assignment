@@ -1,0 +1,44 @@
+.playful span {
+  position: relative;
+  color: #5362f6;
+  font-weight: 500;
+  text-shadow: 0.25px 2px #e485f8;
+  animation: scatter 1.75s infinite;
+}
+
+.playful span:nth-child(2n) {
+  color: #ed625c;
+  text-shadow: 0.25px 2px #f2a063;
+  animation-delay: 0.3s;
+}
+
+.playful span:nth-child(3n) {
+  color: #ffd913;
+  text-shadow: 0.25px 2px #6ec0a9;
+  animation-delay: 0.15s;
+}
+
+.playful span:nth-child(5n) {
+  color: #555bff;
+  text-shadow: 0.25px 2px #e485f8;
+  animation-delay: 0.4s;
+}
+
+.playful span:nth-child(7n),
+.playful span:nth-child(11n) {
+  color: #ff9c55;
+  text-shadow: 0.25px 2px #ff5555;
+  animation-delay: 0.25s;
+}
+
+@keyframes scatter {
+  0% {
+    top: 0;
+  }
+  50% {
+    top: -10px;
+  }
+  100% {
+    top: 0;
+  }
+}
