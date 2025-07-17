@@ -48,57 +48,66 @@ export default async function CreateProfile() {
     redirect(`/profile/${studentID}`);
   }
 
-  return (
-    <div className="p-4 bg-amber-900 h-[100dvh]">
-      <h1 className="text-center text-xl">Create Student Profile</h1>
 
-      <form action={handleSubmit}>
-        <fieldset className="flex flex-col mt-10">
-          <legend className="font-semibold">Student Details</legend>
 
-          <label htmlFor="first_name">First Name:</label>
-          <input
-            type="text"
-            name="first_name"
-            required
-            className="border mb-2 pl-2"
-          />
 
-          <label htmlFor="family_name">Family Name:</label>
-          <input
-            type="text"
-            name="family_name"
-            required
-            className="border mb-2 pl-2"
-          />
 
-          <label htmlFor="form_id">Form:</label>
-          <select name="form_id" required className="bg-amber-800 mb-2">
-            <option value="">Select Form</option>
-            {forms.map((form) => (
-              <option key={form.form_id} value={form.form_id}>
-                {form.name}
-              </option>
-            ))}
-          </select>
 
-          <label htmlFor="house_id">House:</label>
-          <select name="house_id" required className="bg-amber-800 mb-2">
-            <option value="">Select House</option>
-            {houses.map((house) => (
-              <option key={house.house_id} value={house.house_id}>
-                {house.text}
-              </option>
-            ))}
-          </select>
-        </fieldset>
-        <button
-          type="submit"
-          className="bg-amber-950 border-1 rounded-md p-3 mt-5"
-        >
-          Submit
-        </button>
-      </form>
-    </div>
-  );
+return (
+  <div className="min-h-screen bg-[#882c57] flex flex-col items-center justify-center p-8">
+    <h1 className="rounded-lg text-center text-xl font-bold text-white mb-6 hover:text-2xl text-purple  duration-500">
+      Create Student Profile
+    </h1>
+
+    <form action={handleSubmit} className="w-full max-w-md bg-white p-6 rounded-lg border-black hover:shadow-[0_0_20px_4px_rgba(253,224,71,0.8)] transition-all duration-500">
+
+      <fieldset className="flex flex-col gap-2 bg-[#f4d6e9">
+        <legend className="font-bold  mb-2">Student Details</legend>
+
+        <label htmlFor="first_name" >First Name:</label>
+        <input
+          type="text"
+          name="first_name"
+          required
+          className="mb-2 p-2 rounded bg-[#f4d6e9] "
+        />
+
+        <label htmlFor="family_name">Family Name:</label>
+        <input
+          type="text"
+          name="family_name"
+          required
+          className="mb-2 p-2 rounded bg-[#f4d6e9] "
+        />
+
+        <label htmlFor="form_id"></label>
+        <select name="form_id" required className="bg-[#f4d6e9] mb-2 p-2 rounded">
+          <option value="">Select Form</option>
+          {forms.map((form) => (
+            <option key={form.form_id} value={form.form_id}>
+              {form.name}
+            </option>
+          ))}
+        </select>
+
+        <label htmlFor="house_id"></label>
+        <select name="house_id" required className="bg-[#f4d6e9]  mb-2 p-2 rounded">
+          <option value="">Select House</option>
+          {houses.map((house) => (
+            <option key={house.house_id} value={house.house_id}>
+              {house.text}
+            </option>
+          ))}
+        </select>
+      </fieldset>
+
+      <button
+        type="submit"
+        className="w-full mt-4 border border-purple-500 text-purple-600 hover:bg-purple-600 hover:text-white px-4 py-2 rounded"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+);
 }
