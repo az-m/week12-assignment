@@ -1,3 +1,5 @@
+This was a group project where the various elements (database, deployment server etc.) were distributed among team memebers. So if anything doesn't work, I can't fix it because it involves one of the other parties' accounts!
+
 # Welcome to Magic Meadows!
 
 Creating a safe hub for students to foster community, connections and to allow the school house identity to have real meaning even in virtual learning environments, the Magic Meadows app brings students together and gives them a chance to develop a sense of responsibility together! ✨🐉
